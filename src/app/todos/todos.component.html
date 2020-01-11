@@ -1,0 +1,22 @@
+<div class="filter">
+<input 
+    type="text"
+    placeholder="Find.."
+    [(ngModel)]="search"
+>
+</div>
+
+<ul *ngIf="todosService.todos.length; else noTodos">
+    <li *ngFor ="let todo of todosService.todos | filter: search; let i = index">
+        <span>
+            <input type="checkbox" [checked]="todo.completed">
+            <strong>{{ i + 1 }}</strong> {{ todo.title }}
+        </span>
+        <small>{{todo.date | date:'medium'}}</small>
+        <button class='rm' (click)="removeTodo(todo.id)"></button>
+    </li>
+</ul>>
+
+<ng-template #noTodos>
+    <p style="text-align: center;">You haven't any products! :-(</p>
+</ng-template>
