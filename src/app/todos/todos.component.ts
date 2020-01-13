@@ -9,18 +9,21 @@ import { TodosService } from '../shared/todos.service';
 export class TodosComponent implements OnInit {
 
   private search: string = '';
+  
+
    constructor(private todosService: TodosService) { }
 
-   private loading: boolean = true
+
   ngOnInit() {   
   }
 
   deleteTodo(id: number){
     this.todosService.deleteTodo(id)
   }
-
-  // updateTodo(title: string){
-  //   this.todosService.updateTodo(title)
-  // }
-
+  
+  updateField: string = ''
+  updateTodo(id: number, updateField: string){
+    this.todosService.updateTodo(id, updateField)
+    this.updateField = ''
+  }
 }
